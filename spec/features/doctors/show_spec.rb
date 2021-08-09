@@ -21,7 +21,7 @@ RSpec.describe 'Doctors Show Page' do
     expect(page).to_not have_content(@doctor2.university)
   end
 
-  xit 'lists name of the hospital where doctor works' do
+  it 'lists name of the hospital where doctor works' do
     visit "/doctors/#{@doctor1.id}"
 
     expect(page).to have_content(@hospital1.name)
@@ -29,9 +29,9 @@ RSpec.describe 'Doctors Show Page' do
     expect(page).to_not have_content(@hospital2.name)
   end
 
-  xit 'lists name of all patients this doctor has' do
+  it 'lists name of all patients this doctor has' do
     visit "/doctors/#{@doctor1.id}"
-
+    save_and_open_page
     expect(page).to have_content(@patient1.name)
     expect(page).to have_content(@patient2.name)
 
