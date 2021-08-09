@@ -24,7 +24,7 @@ RSpec.describe 'Hospitals Show Page' do
     doctor4 = @hospital1.doctors.create!(name: 'Adam Lambert', specialty: 'Oncology', university: 'John Hopkins University')
 
     visit "/hospitals/#{@hospital1.id}"
-    save_and_open_page
+    
     expect(page).to have_content(@doctor1.university)
     expect(page).to have_content(@doctor3.university)
 
