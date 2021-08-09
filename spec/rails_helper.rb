@@ -34,6 +34,21 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:each) do
+    #Doctors
+    @doctor1 = @hospital1.doctors.create!(name: 'Katy Perry', specialty: 'Cardiology', university: 'John Hopkins University')
+    @doctor2 = @hospital2.doctors.create!(name: 'Miley Cyrus', specialty: 'General Surgery', university: 'Stanford University')
+
+    #Hospitals
+    @hospital1 = Hospital.create!(name: 'Grey Sloan Memorial Hospital')
+    @hospital2 = Hospital.create!(name: 'Oak Valley Hospital')
+
+    #Patients
+    @patient1 = @doctor1.patients.create!(name: "Antonio King", age: 33)
+    @patient2 = @doctor1.patients.create!(name: "Maria Marks", age: 37)
+    @patient3 = @doctor2.patients.create!(name: "Aaron Hedge", age: 35)
+
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
