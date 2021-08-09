@@ -6,7 +6,7 @@ RSpec.describe 'Patient Index Page' do
   # I see the names of all patients listed from oldest to youngest
   it 'displays names of all patients in descending order' do
     visit "/patients"
-
+    
     expect(page).to have_content(@patient1.name)
     expect(page).to have_content(@patient2.name)
     expect(page).to have_content(@patient3.name)
