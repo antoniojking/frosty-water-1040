@@ -5,6 +5,6 @@
 <br>
 
 <h3>List of Universities:</h3>
-<% @hospital.doctors.each do |doctor| %>
+<% @hospital.uniq_universities.each do |doctor| %>
   <p><%= doctor.university %></p>
 <% end %>
