@@ -42,6 +42,7 @@ RSpec.configure do |config|
     #Doctors
     @doctor1 = @hospital1.doctors.create!(name: 'Katy Perry', specialty: 'Cardiology', university: 'John Hopkins University')
     @doctor2 = @hospital2.doctors.create!(name: 'Miley Cyrus', specialty: 'General Surgery', university: 'Stanford University')
+    @doctor3 = @hospital1.doctors.create!(name: 'U2', specialty: 'Plastic Surgery', university: 'Harvard University')
 
     #Patients
     @patient1 = @doctor1.patients.create!(name: "Antonio King", age: 33)
