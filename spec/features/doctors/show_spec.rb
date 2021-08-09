@@ -31,10 +31,33 @@ RSpec.describe 'Doctors Show Page' do
 
   it 'lists name of all patients this doctor has' do
     visit "/doctors/#{@doctor1.id}"
-    save_and_open_page
+
     expect(page).to have_content(@patient1.name)
     expect(page).to have_content(@patient2.name)
 
     expect(page).to_not have_content(@patient3.name)
+  end
+
+  # As a visitor
+  # When I visit a Doctor's show page
+  # Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+  # When I click that button for one patient
+  # I'm brought back to the Doctor's show page
+  # And I no longer see that patient's name listed
+  it 'has a button to remove patient from caseload' do
+    visit "/doctors/#{@doctor1.id}"
+
+    expect(page).to have_button("Remove #{@patient1.name}")
+    expect(page).to have_button("Remove #{@patient2.name}")
+  end
+
+  it 'can remove patient from caseload' do
+    visit "/doctors/#{@doctor1.id}"
+
+    click_button("Remove #{@patient2.name}")
+
+    expect(page).to have_content(@patient1.name)
+
+    expect(page).to_not have_content(@patient2.name)
   end
 end
