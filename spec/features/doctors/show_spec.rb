@@ -55,7 +55,7 @@ RSpec.describe 'Doctors Show Page' do
     visit "/doctors/#{@doctor1.id}"
 
     click_button("Remove #{@patient2.name}")
-
+    
     expect(page).to have_content(@patient1.name)
 
     expect(page).to_not have_content(@patient2.name)
